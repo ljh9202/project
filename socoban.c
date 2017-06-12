@@ -1,18 +1,18 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#define MAP_MAX_X 30    //¸Ê °¡·Î ÃÖ´ë Å©±â
-#define MAP_MAX_Y 30    //¸Ê ¼¼·Î ÃÖ´ë Å©±â
+#define MAP_MAX_X 30    //ë§µ ê°€ë¡œ ìµœëŒ€ í¬ê¸°
+#define MAP_MAX_Y 30    //ë§µ ì„¸ë¡œ ìµœëŒ€ í¬ê¸°
 
-char user_name[11] = "";//ÀÔ·Â¹ŞÀº »ç¿ëÀÚ ÀÌ¸§
-int storage_cnt[5];     //½ºÅ×ÀÌÁö º° º¸°üÀå¼Ò(O) °³¼ö
-int box_cnt[5];         //½ºÅ×ÀÌÁö º° ¹Ú½º($) °³¼ö
-int stage_num=-1;       //½ºÅ×ÀÌÁö ¹øÈ£
-int MAP[5][MAP_MAX_Y][MAP_MAX_X];   //¸Ê
+char user_name[11] = "";//ì…ë ¥ë°›ì€ ì‚¬ìš©ì ì´ë¦„
+int storage_cnt[5];     //ìŠ¤í…Œì´ì§€ ë³„ ë³´ê´€ì¥ì†Œ(O) ê°œìˆ˜
+int box_cnt[5];         //ìŠ¤í…Œì´ì§€ ë³„ ë°•ìŠ¤($) ê°œìˆ˜
+int stage_num=-1;       //ìŠ¤í…Œì´ì§€ ë²ˆí˜¸
+int MAP[5][MAP_MAX_Y][MAP_MAX_X];   //ë§µ
 
-void input_name();      //»ç¿ëÀÚÀÇ ÀÌ¸§À» ÀÔ·Â¹Ş´Â ÇÔ¼ö
-void open_map();        //map.txt ÆÄÀÏ·ÎºÎÅÍ ¸ÊÀ» ºÒ·¯µéÀÌ´Â ÇÔ¼ö
-void draw_map(int);     //ºÒ·¯µéÀÎ ¸ÊÀ» Ãâ·ÂÇÏ´Â ÇÔ¼ö
+void input_name();      //ì‚¬ìš©ìì˜ ì´ë¦„ì„ ì…ë ¥ë°›ëŠ” í•¨ìˆ˜
+void open_map();        //map.txt íŒŒì¼ë¡œë¶€í„° ë§µì„ ë¶ˆëŸ¬ë“¤ì´ëŠ” í•¨ìˆ˜
+void draw_map(int);     //ë¶ˆëŸ¬ë“¤ì¸ ë§µì„ ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜
 
 int main(void)
 {
@@ -24,11 +24,11 @@ int main(void)
     for(int i=0; i<5; i++)
         if(storage_cnt[i]!=box_cnt[i])
         {
-            printf("¹Ú½ºÀÇ °³¼ö¿Í º¸°üÀå¼ÒÀÇ °³¼ö°¡ ´Ù¸¨´Ï´Ù. °ÔÀÓÀ» Á¾·áÇÕ´Ï´Ù.\n");
+            printf("ë°•ìŠ¤ì˜ ê°œìˆ˜ì™€ ë³´ê´€ì¥ì†Œì˜ ê°œìˆ˜ê°€ ë‹¤ë¦…ë‹ˆë‹¤. ê²Œì„ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.\n");
             exit(1);
         }
 
-    printf("ÀÌ¸§ : %s\n",user_name);
+    printf("ì´ë¦„ : %s\n",user_name);
 
     draw_map(stage_num);
 
@@ -37,7 +37,7 @@ int main(void)
 void input_name()
 {
     int i=0, c;
-    printf("Input name : ");
+    printf("Input name : ");  //
 
     while(1)
     {
@@ -46,7 +46,7 @@ void input_name()
         {
             while((c=getchar())!='\n')
                 ;
-            printf("»ç¿ëÀÚ ÀÌ¸§Àº ¿µ¹® ÃÖ´ë 10¹®ÀÚ±îÁö °¡´ÉÇÕ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä : ");
+            printf("ì‚¬ìš©ì ì´ë¦„ì€ ì˜ë¬¸ ìµœëŒ€ 10ë¬¸ìê¹Œì§€ ê°€ëŠ¥í•©ë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•˜ì„¸ìš” : ");
             i=0;
             continue;
         }
@@ -66,7 +66,7 @@ void open_map()
     map=fopen("map.txt","r");
     if(map==NULL)
     {
-        printf("ÆÄÀÏÀ» ¿­ ¼ö ¾ø½À´Ï´Ù.\n");
+        printf("íŒŒì¼ì„ ì—´ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.\n");
         exit(1);
     }
     while(fscanf(map, "%c", &data)!=EOF)
